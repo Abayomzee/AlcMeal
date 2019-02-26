@@ -1,19 +1,13 @@
-"use strict";
+import { Router } from 'express';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
+import OrderController from '../controllers/order.controller';
 
-var _express = require("express");
+const OrderRouter = Router();
 
-var _order = _interopRequireDefault(require("../controllers/order.controller"));
+OrderRouter.post('/', OrderController.postOrder);
+OrderRouter.put('/:id', OrderController.modifyOrders);
+OrderRouter.get('/', OrderController.fetchAllOrders);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+export default OrderRouter;
 
-var OrderRouter = (0, _express.Router)();
-OrderRouter.post('/', _order.default.postOrder);
-OrderRouter.put('/:id', _order.default.modifyOrders);
-OrderRouter.get('/', _order.default.fetchAllOrders);
-var _default = OrderRouter;
-exports.default = _default;
+
