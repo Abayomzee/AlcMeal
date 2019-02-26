@@ -1,60 +1,70 @@
-import dummyData from '../utils/orderDummyData';
-import Orders from './../models/order.model';
+"use strict";
 
-const OrderService = {
-    postAnOrder(order){
-        const orderLength = dummyData.Orders.length;
-        const lastOrder = dummyData.Orders[orderLength - 1].id;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
 
-        order.id = lastOrder + 1;
+var _orderDummyData = _interopRequireDefault(require("../utils/orderDummyData"));
 
-        dummyData.Orders.push(order);
-        return order;
-    },
+var _order = _interopRequireDefault(require("./../models/order.model"));
 
-    modifyOrder(order, id){
-        // get the order id and index
-        const orderId = dummyData.Orders.find((anOrder) => anOrder.id == id);
-        const getOrderIndex = dummyData.Orders.indexOf(orderId);
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-        orderId.id = id;
+var OrderService = {
+  postAnOrder: function postAnOrder(order) {
+    var orderLength = _orderDummyData.default.Orders.length;
+    var lastOrder = _orderDummyData.default.Orders[orderLength - 1].id;
+    order.id = lastOrder + 1;
 
-            if(order.userName == null){
-                orderId.username = orderId.username;
-            } else {
-                orderId.username = order.userName;
-            }
+    _orderDummyData.default.Orders.push(order);
 
-            if(order.address == null){
-                orderId.address = orderId.address;
-            } else {
-                orderId.address = order.address;
-            }
+    return order;
+  },
+  modifyOrder: function modifyOrder(order, id) {
+    // get the order id and index
+    var orderId = _orderDummyData.default.Orders.find(function (anOrder) {
+      return anOrder.id == id;
+    });
 
-            if(order.items == null){
-                orderId.items = orderId.items;
-            } else {
-                orderId.items = order.items;
-            }
+    var getOrderIndex = _orderDummyData.default.Orders.indexOf(orderId);
 
-            dummyData.Orders.splice(getOrderIndex, 1, orderId);
+    orderId.id = id;
 
-        return orderId;
-    },
-
-    getAllOrders(){
-        const allOrders = dummyData.Orders.map((orders) => {
-            const newOrder = new Orders();
-
-            newOrder.id = orders.id;
-            newOrder.userName = orders.username;
-            newOrder.address = orders.address;
-            newOrder.items = orders.items;
-
-            return newOrder;
-        })
-        return allOrders || {};
+    if (order.userName == null) {
+      orderId.username = orderId.username;
+    } else {
+      orderId.username = order.userName;
     }
-}
 
-export default OrderService;
+    if (order.address == null) {
+      orderId.address = orderId.address;
+    } else {
+      orderId.address = order.address;
+    }
+
+    if (order.items == null) {
+      orderId.items = orderId.items;
+    } else {
+      orderId.items = order.items;
+    }
+
+    _orderDummyData.default.Orders.splice(getOrderIndex, 1, orderId);
+
+    return orderId;
+  },
+  getAllOrders: function getAllOrders() {
+    var allOrders = _orderDummyData.default.Orders.map(function (orders) {
+      var newOrder = new _order.default();
+      newOrder.id = orders.id;
+      newOrder.userName = orders.username;
+      newOrder.address = orders.address;
+      newOrder.items = orders.items;
+      return newOrder;
+    });
+
+    return allOrders || {};
+  }
+};
+var _default = OrderService;
+exports.default = _default;
