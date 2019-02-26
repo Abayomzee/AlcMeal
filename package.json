@@ -3,7 +3,7 @@
   "description": "Our sample Node to Heroku app",
   "main": "server.js",
   "scripts": {
-    "start": "node --exec babel-node index.js"
+    "start": "nodemon --exec babel-node index.js"
   },
   "dependencies": {
     "@babel/cli": "^7.2.3",
@@ -13,11 +13,10 @@
     "@babel/register": "^7.0.0",
     "body-parser": "^1.18.3",
     "ejs": "~1.0.0",
-    "express": "~4.9.8"
-  },
-  "devDependencies": {
+    "express": "~4.9.8",
     "nodemon": "^1.18.10"
   },
+  "devDependencies": {},
   "engines": {
     "node": "10.13.0"
   }
