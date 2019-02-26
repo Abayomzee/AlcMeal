@@ -1,22 +1,15 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
 
-var _express = require("express");
+import { Router } from 'express';
 
-var _meal = _interopRequireDefault(require("../controllers/meal.controller"));
+import MealsController from '../controllers/meal.controller';
+import MenuController from './../controllers/menu.controller';
 
-var _menu = _interopRequireDefault(require("./../controllers/menu.controller"));
+const router = Router();
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+router.get('/', MealsController.fetchAllMeals);
+router.post('/', MealsController.AddMeals);
+router.get('/:id', MealsController.getSingleMeal);
+router.delete('/:id', MealsController.deleteAMeal);
+router.put('/:id', MealsController.updateMeal);
 
-var router = (0, _express.Router)();
-router.get('/', _meal.default.fetchAllMeals);
-router.post('/', _meal.default.AddMeals);
-router.get('/:id', _meal.default.getSingleMeal);
-router.delete('/:id', _meal.default.deleteAMeal);
-router.put('/:id', _meal.default.updateMeal);
-var _default = router;
-exports.default = _default;
+export default router;
