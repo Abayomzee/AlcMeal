@@ -1,51 +1,64 @@
-import MealServices from './../services/meal.services';
+"use strict";
 
-const MealController = {
-    fetchAllMeals(req, res){
-        const allMeals = MealServices.fetchAllMeals();
-        return res.json({
-            status: 'Success',
-            data: allMeals
-        }).status(200);
-    },
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
 
-    AddMeals(req, res){
-        const newMeal = req.body;
-        const createdMeal = MealServices.addMeal(newMeal);
+var _meal = _interopRequireDefault(require("./../services/meal.services"));
 
-        return res.json({
-            status: 'Success',
-            data: createdMeal
-        }).status(200);
-    },
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-    getSingleMeal(req, res){
-        const mealId = req.params.id;
-        const getMeal = MealServices.getMeal(mealId);
-        return res.json({
-            status: 'Success',
-            data: getMeal
-        }).status(201);        
-    },
+var MealController = {
+  fetchAllMeals: function fetchAllMeals(req, res) {
+    var allMeals = _meal.default.fetchAllMeals();
 
-    deleteAMeal(req, res){
-        const mealId = req.params.id;
-        const removeMeal = MealServices.deleteMeal(mealId);
-        return res.json({
-            status: 'Success',
-            data: removeMeal
-        }).status(201);
-    },
+    return res.json({
+      status: 'Success',
+      data: allMeals
+    }).status(200);
+  },
+  AddMeals: function AddMeals(req, res) {
+    var newMeal = req.body;
 
-    updateMeal(req, res){
-        const mealBody = req.body;
-        const mealId = req.params.id;
-        const editMeal = MealServices.updateMeal(mealBody, mealId);
-        return res.json({
-            status: 'Success',
-            data: editMeal
-        }).status(201);
-    }
+    var createdMeal = _meal.default.addMeal(newMeal);
+
+    return res.json({
+      status: 'Success',
+      data: createdMeal
+    }).status(200);
+  },
+  getSingleMeal: function getSingleMeal(req, res) {
+    var mealId = req.params.id;
+
+    var getMeal = _meal.default.getMeal(mealId);
+
+    return res.json({
+      status: 'Success',
+      data: getMeal
+    }).status(201);
+  },
+  deleteAMeal: function deleteAMeal(req, res) {
+    var mealId = req.params.id;
+
+    var removeMeal = _meal.default.deleteMeal(mealId);
+
+    return res.json({
+      status: 'Success',
+      data: removeMeal
+    }).status(201);
+  },
+  updateMeal: function updateMeal(req, res) {
+    var mealBody = req.body;
+    var mealId = req.params.id;
+
+    var editMeal = _meal.default.updateMeal(mealBody, mealId);
+
+    return res.json({
+      status: 'Success',
+      data: editMeal
+    }).status(201);
+  }
 };
-
-export default MealController;
+var _default = MealController;
+exports.default = _default;
