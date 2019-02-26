@@ -3,7 +3,7 @@
   "description": "Our sample Node to Heroku app",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon --exec babel-node index.js"
+    "start": "node index.js"
   },
   "dependencies": {
     "@babel/cli": "^7.2.3",
